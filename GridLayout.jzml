@@ -1,0 +1,80 @@
+<JZML>
+<PROJECT version="5400" width="1024" height="724" osc_target="-1" midi_target="-1" kbmouse_target="-1" skin="Flat"/>
+<WINDOW class="JAZZINTERFACE" text="Interface" x="0" y="0" width="1024" height="724" state="1" group="0" font="tahoma,11,0" >
+<WINDOW class="Container" text="Container" x="70" y="69" width="444" height="205" state="1" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" label="1" tabbar="1" meta="0">
+<WINDOW class="Text" text="Text1" x="0" y="0" width="137" height="57" state="241" group="0" font="tahoma,14,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" content="Text1">
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Container/Text1/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Text" text="Text2" x="145" y="0" width="137" height="57" id="1" state="241" group="0" font="tahoma,14,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" content="Text2">
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Container/Text2/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Text" text="Text3" x="290" y="0" width="137" height="57" id="2" state="241" group="0" font="tahoma,14,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" content="Text3">
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Container/Text3/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Text" text="Text4" x="0" y="65" width="137" height="57" id="3" state="241" group="0" font="tahoma,14,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" content="Text4">
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Container/Text4/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Text" text="Text5" x="145" y="65" width="137" height="57" id="4" state="241" group="0" font="tahoma,14,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" content="Text5">
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Container/Text5/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Text" text="Text6" x="290" y="65" width="137" height="57" id="5" state="241" group="0" font="tahoma,14,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" content="Text6">
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Container/Text6/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Text" text="Text7" x="0" y="131" width="137" height="57" id="6" state="241" group="0" font="tahoma,14,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" content="Text7">
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Container/Text7/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Text" text="Text8" x="145" y="131" width="137" height="57" id="7" state="241" group="0" font="tahoma,14,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" content="Text8">
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Container/Text8/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Text" text="Text9" x="290" y="131" width="137" height="57" id="8" state="241" group="0" font="tahoma,14,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" content="Text9">
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Container/Text9/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<SCRIPT name="onLoad()" script="// When the project loads, create the grid layout
+createGridLayout();" trigger_script="" trigger_type="5" trigger="1" clock="0" clock_div="4" osc_message="/Container/onLoad" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+<SCRIPT name="createGridLayout()" script="// Get a reference to this container
+decl this = getobject();
+
+// Get the frame of the container, set the origin to {0, 0}
+// and subtract the container's stroke width
+decl bounds = replace(getobjectrect(this), {0, 0}, 0) - {0, 0, 16, 16};
+
+// Define the number of rows, columns. and spacing between elements
+decl rows = 3;
+decl columns = 3;
+decl spacing = 8;
+
+// Calculate the column width and row height
+// based on the number of rows and columns and spacing
+decl columnWidth = (bounds[2] - ((columns - 1) * spacing)) / columns;
+decl rowHeight = (bounds[3] - ((rows - 1) * spacing)) / rows;
+
+// Decl the x and y translation
+decl tx = 0, ty = 0;
+
+// Get a reference to the first object in the container
+decl object = getfirst(this);
+
+// Declare the iterator index
+decl i = 0;
+
+// Iterate through all the columns and rows
+for (i = 0; i < rows * columns; i++) {
+
+	// Set the position of the current object based on the translation
+	setobjectrect(object, {tx, ty, columnWidth, rowHeight});
+
+	// If we reach the end of the column, reset the x origin to
+	// 0 and move down by a row; otherwise move across by a column
+	if (i > 0 && (i + 1) % columns == 0) {
+		tx = 0;
+		ty += rowHeight + spacing;
+	} else {
+		tx += columnWidth + spacing;
+	}
+
+	// Get a reference to the next object in the container
+	object = getnext(object);
+}" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/Container/createGridLayout" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
+</WINDOW>
+</WINDOW>
+</JZML>

@@ -1,0 +1,41 @@
+<JZML>
+<PROJECT version="5400" width="1024" height="724" osc_target="-1" midi_target="-1" kbmouse_target="-1" skin="Flat"/>
+<WINDOW class="JAZZINTERFACE" text="Default" x="0" y="0" width="1024" height="724" state="1" group="0" font="tahoma,11,0" >
+<WINDOW class="Fader" text="Pitchbend" x="151" y="86" width="79" height="271" state="1" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" color="1596013" cursor="0" grid="0" grid_steps="1" label="1" physic="1" precision="3" unit="" value="1" zoom="1.000000">
+<PARAM name="x=" value="0.500000" send="17" osc_target="0" osc_trigger="1" osc_message="/Pitchbend/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<PARAM name="z=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Pitchbend/z" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="value=min(floor(x * 16384), 16383)" send="0" osc_target="0" osc_trigger="1" osc_message="/Pitchbend/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="attraction=1" send="0" osc_target="0" osc_trigger="1" osc_message="/Pitchbend/attraction" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="friction=0.9" send="0" osc_target="0" osc_trigger="1" osc_message="/Pitchbend/friction" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="speed=1" send="0" osc_target="0" osc_trigger="1" osc_message="/Pitchbend/speed" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<SCRIPT name="onX()" script="// When the fader moves, send MIDI, but only if your finger is on it
+
+if (z) {
+	sendMIDI();
+}" trigger_script="x" trigger_type="0" trigger="1" clock="0" clock_div="4" osc_message="/Pitchbend/onX" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+<SCRIPT name="onMIDI(MIDI_ARGS)" script="// When MIDI comes in, if your finger isn't on the fader,
+// update the fader position
+
+if (!z) {
+	x = min((MIDI_ARGS[1] / 16384), 16383);
+}" trigger_script="" trigger_type="3" trigger="1" clock="0" clock_div="4" osc_message="/Pitchbend/onMIDI" midi_message="0xE0,0xEF,0,127" midi_target="0" flag="1"/>
+<SCRIPT name="onLoad()" script="// When the project loads, set the fader position to center
+
+resetToCenter();" trigger_script="" trigger_type="5" trigger="1" clock="0" clock_div="4" osc_message="/Pitchbend/onLoad" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+<SCRIPT name="resetToCenter()" script="// Snaps the fader back to center
+
+x = 0.5;
+" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/Pitchbend/resetToCenter" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+<SCRIPT name="onZ()" script="// When you take your finger off the fader, snap back to center,
+// and send MIDI
+
+if (!z) {
+	x = 0.5;
+	sendMIDI();
+}" trigger_script="z" trigger_type="0" trigger="1" clock="0" clock_div="4" osc_message="/Pitchbend/onZ" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+<SCRIPT name="sendMIDI()" script="// Sends MIDI out target 0 on channel 1
+
+pitchbendout(0, x, 0.0, 1.0, 1);" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/Pitchbend/sendMIDI" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
+</WINDOW>
+</WINDOW>
+</JZML>
