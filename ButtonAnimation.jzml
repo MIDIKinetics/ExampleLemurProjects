@@ -1,0 +1,54 @@
+<JZML>
+<PROJECT version="5400" width="1024" height="724" osc_target="-1" midi_target="-1" kbmouse_target="-1" skin="Flat"/>
+<WINDOW class="JAZZINTERFACE" text="Interface" x="0" y="0" width="1024" height="724" state="1" group="0" font="tahoma,11,0" >
+<WINDOW class="Pads" text="Pads" x="218" y="145" width="99" height="77" state="1" group="0" font="tahoma,13,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" bitmap_off="" bitmap_on="" capture="1" color="865343,1596013" column="1" label="0" multicolor="0" multilabel="1" row="1" style="0">
+<PARAM name="x=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Pads/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="attack=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Pads/attack" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="decay=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Pads/decay" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="sustain=1" send="0" osc_target="0" osc_trigger="1" osc_message="/Pads/sustain" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="release=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Pads/release" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="hold=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Pads/hold" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Pads/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="animationStartTime=" value="-1" send="0" osc_target="0" osc_trigger="1" osc_message="/Pads/animationStartTime" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="333,24576,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="originalRect=" value="218,145,100,78" send="0" osc_target="0" osc_trigger="1" osc_message="/Pads/originalRect" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="rectAtAnimationStart=" value="220,147,95,73" send="0" osc_target="0" osc_trigger="1" osc_message="/Pads/rectAtAnimationStart" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="1097,1,0" kbmouse_scale="0,1,0,1"/>
+<SCRIPT name="onLoad()" script="originalRect = getobjectrect(getobject());
+stopAnimation();
+
+setattribute(getobject(), 'multilabel', 1);
+setattribute(getobject(), 'labels', {'Press Me'});" trigger_script="" trigger_type="5" trigger="1" clock="0" clock_div="4" osc_message="/Pads/onLoad" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+<SCRIPT name="onTime()" script="if (animationStartTime == -1) return;
+
+decl animationDuration = 0.2;
+decl animationProgress = (time - animationStartTime) / animationDuration;
+if (animationProgress >= 1.0) {
+	stopAnimation();
+    return;	
+}
+
+animationProgress = sin((animationProgress * pi) / 2);
+
+decl contentInset = 5;
+decl scaledInset = contentInset * animationProgress;
+
+decl compressedRect = {
+	originalRect[0] + (scaledInset / 2),
+	originalRect[1] + (scaledInset / 2),
+	originalRect[2] - scaledInset,
+	originalRect[3] - scaledInset
+};
+
+decl targetRect = x ? compressedRect : originalRect;
+
+decl rectDiff = rectAtAnimationStart - targetRect;
+decl currentRect = rectAtAnimationStart - (rectDiff * animationProgress);
+setobjectrect(getobject(), currentRect);
+" trigger_script="time" trigger_type="0" trigger="1" clock="0" clock_div="4" osc_message="/Pads/onTime" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+<SCRIPT name="onX()" script="startAnimation();" trigger_script="x" trigger_type="0" trigger="1" clock="0" clock_div="4" osc_message="/Pads/onX" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+<SCRIPT name="startAnimation()" script="rectAtAnimationStart = getobjectrect(getobject());
+animationStartTime = time;" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/Pads/startAnimation" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
+<SCRIPT name="stopAnimation()" script="animationStartTime = -1;
+" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/Pads/stopAnimation" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
+</WINDOW>
+</WINDOW>
+</JZML>
