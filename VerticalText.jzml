@@ -1,0 +1,51 @@
+<JZML>
+<PROJECT version="5400" width="667" height="331" osc_target="-2" midi_target="-2" kbmouse_target="-2" skin="Flat"/>
+<WINDOW class="JAZZINTERFACE" text="Default" x="0" y="0" width="667" height="331" state="1" group="0" font="tahoma,11,0" >
+<WINDOW class="Text" text="Text" x="205" y="41" width="71" height="240" id="1" state="241" group="0" font="tahoma,14,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" content="L
+E
+M
+U
+R">
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Text/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<SCRIPT name="onLoad()" script="setattribute(getobject(), 'content', verticalText('LEMUR'));" trigger_script="" trigger_type="5" trigger="1" clock="0" clock_div="4" osc_message="/Text/onLoad" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+</WINDOW>
+<WINDOW class="Text" text="Text2" x="289" y="41" width="71" height="240" id="2" state="241" group="0" font="tahoma,14,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" content="M
+I
+D
+I">
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Text2/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<SCRIPT name="onLoad()" script="setattribute(getobject(), 'content', verticalText('MIDI'));" trigger_script="" trigger_type="5" trigger="1" clock="0" clock_div="4" osc_message="/Text2/onLoad" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+</WINDOW>
+<WINDOW class="Text" text="Text3" x="370" y="41" width="71" height="240" id="3" state="241" group="0" font="tahoma,14,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" content="C
+O
+N
+T
+R
+O
+L
+L
+E
+R">
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Text3/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<SCRIPT name="onLoad()" script="setattribute(getobject(), 'content', verticalText('CONTROLLER'));" trigger_script="" trigger_type="5" trigger="1" clock="0" clock_div="4" osc_message="/Text3/onLoad" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+</WINDOW>
+</WINDOW>
+<SCRIPT name="verticalText(text)" script="// Inserts a new line after every character
+
+decl spacedText = '';
+decl chars = stringtoarray(text);
+
+if (sizeof(chars) <= 1) {
+	return text;
+}
+
+decl i;
+for (i = 0; i < sizeof(chars); i++) {
+	spacedText += arraytostring(chars[i]);
+	if (i < sizeof(chars)- 1) {
+		spacedText += arraytostring(10); // ASCII code for new line
+	}
+}
+
+return spacedText;" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/verticalText" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+</JZML>
