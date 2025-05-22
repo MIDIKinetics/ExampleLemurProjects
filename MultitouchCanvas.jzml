@@ -1,0 +1,78 @@
+<JZML>
+<PROJECT version="5400" width="932" height="386" osc_target="-1" midi_target="-1" kbmouse_target="-1" skin="Flat"/>
+<WINDOW class="JAZZINTERFACE" text="Default" x="0" y="0" width="932" height="386" state="1" group="0" font="tahoma,11,0" >
+<WINDOW class="Canvas" text="Canvas" x="97" y="154" width="785" height="203" state="5" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" redrawMode="0" touchSupport="2">
+<VARIABLE name="cursorIDs=" value="-1,-1" send="1" osc_target="0" osc_trigger="1" osc_message="/Canvas/cursorIDs" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="touchesX=" value="-1,-1" send="1" osc_target="0" osc_trigger="1" osc_message="/Canvas/touchesX" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="touchesY=" value="-1,-1" send="1" osc_target="0" osc_trigger="1" osc_message="/Canvas/touchesY" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<SCRIPT name="onRedraw()" script="decl this = getobject();
+canvas_clear(this);
+canvas_setFillStyle(this, {0.5});
+decl frame = getobjectrect(this);
+canvas_fillRect(this, 0, 0, frame[2], frame[3]);" trigger_script="" trigger_type="255" trigger_name="onRedraw" trigger="1" clock="0" clock_div="4" osc_message="/Canvas/onRedraw" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+<SCRIPT name="onLoad()" script="// Initialize vectors to store active cursor IDs and their corresponding touch positions.
+// -1 is used as a 'sentinel value' to indicate an unused slot.
+// You can Google search for the idea of 'sentinels' in programming. 
+// Basically, a sentinel is a placeholder value that represents 'No Value';
+
+cursorIDs  = {-1, -1};
+touchesX   = {-1, -1};
+touchesY   = {-1, -1};
+
+Monitor.value = 'Waiting for input';
+" trigger_script="" trigger_type="5" trigger="1" clock="0" clock_div="4" osc_message="/Canvas/onLoad" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+<SCRIPT name="onCursorDown(cursor,hit,x,y)" script="// Look for the first available slot in the cursor list.
+// The `firstof` function returns the index of the first element equal to -1.
+// If no such value is found, it returns the size of the array (meaning no slot is free).
+decl index = firstof(cursorIDs == -1);
+if (index == sizeof(cursorIDs)) return; // No available slots
+
+// Store the new cursor and its position.
+cursorIDs[index] = cursor;
+touchesX[index]  = x;
+touchesY[index]  = y;
+
+// You can now use the number of active cursors to trigger behavior.
+// For example: perform different actions depending on how many fingers are down.
+decl numCursors = sumof(cursorIDs != -1);
+Monitor.value = 'Touch Down: ' + numCursors + ' cursors';
+" trigger_script="" trigger_type="255" trigger_name="onCursorDown" trigger="1" clock="0" clock_div="4" osc_message="/Canvas/onCursorDown" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+<SCRIPT name="onCursorMove(cursor,hit,x,y)" script="// Identify which index this cursor is associated with.
+decl index = firstof(cursorIDs == cursor);
+if (index == sizeof(cursorIDs)) return; // Cursor not tracked
+
+// Update its position.
+touchesX[index] = x;
+touchesY[index] = y;
+
+// This is where you respond to drag or gesture motion.
+decl numCursors = sumof(cursorIDs != -1);
+Monitor.value = 'Touch Move: ' + numCursors + ' cursors';" trigger_script="" trigger_type="255" trigger_name="onCursorMove" trigger="1" clock="0" clock_div="4" osc_message="/Canvas/onCursorMove" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+<SCRIPT name="onCursorUp(cursor,hit,x,y)" script="// Locate the cursor in the list.
+decl index = firstof(cursorIDs == cursor);
+if (index == sizeof(cursorIDs)) return; // Cursor not tracked
+
+// Mark the slot as free and reset its data.
+cursorIDs[index] = -1;
+touchesX[index]  = -1;
+touchesY[index]  = -1;
+
+// You can respond to touch release events here (e.g., check if gesture was completed).
+decl numCursors = sumof(cursorIDs != -1);
+Monitor.value = 'Touch Up: ' + numCursors + ' cursors';
+" trigger_script="" trigger_type="255" trigger_name="onCursorUp" trigger="1" clock="0" clock_div="4" osc_message="/Canvas/onCursorUp" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+</WINDOW>
+<WINDOW class="Monitor" text="cursorIDs" x="97" y="25" width="261" height="60" id="1" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" label="1" precision="3" unit="" value="1">
+<VARIABLE name="value=Canvas.cursorIDs" send="0" osc_target="0" osc_trigger="1" osc_message="/cursorIDs/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Monitor" text="touchesX" x="365" y="25" width="296" height="60" id="2" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" label="1" precision="3" unit="" value="1">
+<VARIABLE name="value=Canvas.touchesX" send="0" osc_target="0" osc_trigger="1" osc_message="/touchesX/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Monitor" text="touchesY" x="674" y="25" width="198" height="60" id="3" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" label="1" precision="3" unit="" value="1">
+<VARIABLE name="value=Canvas.touchesY" send="0" osc_target="0" osc_trigger="1" osc_message="/touchesY/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Monitor" text="Monitor" x="97" y="93" width="785" height="48" id="4" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" label="0" precision="3" unit="" value="1">
+<VARIABLE name="value=" value="'Touch Up: 0 cursors'" send="0" osc_target="0" osc_trigger="1" osc_message="/Monitor/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+</WINDOW>
+</JZML>
