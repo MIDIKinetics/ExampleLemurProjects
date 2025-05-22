@@ -9,7 +9,12 @@
 canvas_clear(this);
 canvas_setFillStyle(this, {0.5});
 decl frame = getobjectrect(this);
-canvas_fillRect(this, 0, 0, frame[2], frame[3]);" trigger_script="" trigger_type="255" trigger_name="onRedraw" trigger="1" clock="0" clock_div="4" osc_message="/Canvas/onRedraw" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+canvas_fillRect(this, 0, 0, frame[2], frame[3]);
+
+canvas_setFillStyle(this, 1);
+canvas_setFontSize(this, 20);
+canvas_setTextAlign(this, 1);
+canvas_fillText(this, 'Touch here with 1 or 2 fingers', frame[2]/2, frame[3]/2, frame[2]);" trigger_script="" trigger_type="255" trigger_name="onRedraw" trigger="1" clock="0" clock_div="4" osc_message="/Canvas/onRedraw" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="onLoad()" script="// Initialize vectors to store active cursor IDs and their corresponding touch positions.
 // -1 is used as a 'sentinel value' to indicate an unused slot.
 // You can Google search for the idea of 'sentinels' in programming. 
