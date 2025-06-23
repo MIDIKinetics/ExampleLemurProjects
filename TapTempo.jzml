@@ -1,7 +1,7 @@
 <JZML>
 <PROJECT version="5400" width="932" height="386" osc_target="-1" midi_target="-1" kbmouse_target="-1" skin="Flat"/>
 <WINDOW class="JAZZINTERFACE" text="Default" x="0" y="0" width="932" height="386" state="1" group="0" font="tahoma,11,0" >
-<WINDOW class="Pads" text="TapTempo" x="266" y="108" width="78" height="63" id="15" state="1" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" bitmap_off="" bitmap_on="" capture="1" color="865343,1596013" column="1" label="1" multicolor="0" multilabel="1" row="1" style="0">
+<WINDOW class="Pads" text="TapTempo" x="330" y="144" width="78" height="63" id="15" state="1" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" bitmap_off="" bitmap_on="" capture="1" color="865343,1596013" column="1" label="1" multicolor="0" multilabel="1" row="1" style="0">
 <PARAM name="x=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/TapTempo/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="attack=0" send="0" osc_target="0" osc_trigger="1" osc_message="/TapTempo/attack" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="decay=0" send="0" osc_target="0" osc_trigger="1" osc_message="/TapTempo/decay" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
@@ -9,8 +9,8 @@
 <VARIABLE name="release=0" send="0" osc_target="0" osc_trigger="1" osc_message="/TapTempo/release" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="hold=0" send="0" osc_target="0" osc_trigger="1" osc_message="/TapTempo/hold" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/TapTempo/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<VARIABLE name="tapTimes=" value="73640.187500,73641.000000,73641.812500,73642.687500" send="1" osc_target="0" osc_trigger="1" osc_message="/TapTempo/tapTimes" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<VARIABLE name="bpm=" value="72" send="1" osc_target="0" osc_trigger="1" osc_message="/TapTempo/bpm" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="28205,28001,12389" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="tapTimes=" value="74258.476562" send="1" osc_target="0" osc_trigger="1" osc_message="/TapTempo/tapTimes" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="bpm=" value="111" send="1" osc_target="0" osc_trigger="1" osc_message="/TapTempo/bpm" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="28205,28001,12389" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="onPadPressed(indices)" script="decl now = time;
 decl count = sizeof(tapTimes);
 
